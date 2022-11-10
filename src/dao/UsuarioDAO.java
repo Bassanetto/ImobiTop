@@ -6,11 +6,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Usuario;
-import screens.TelaUsuarioCadastro;
 
 public class UsuarioDAO {
 
@@ -20,11 +18,19 @@ public class UsuarioDAO {
         this.connection = connection;
     }
 
-    public void insert(Usuario usuario) throws SQLException{
-
-        String sql = "insert into usuario(usuario,senha) values('"+usuario.getUsuario()+"','"+usuario.getSenha()+"'); ";
+    public void insert(Usuario usuario) throws SQLException {
+        String sql = "insert into usuario(usuario,senha) values('" +usuario.getUsuario()+ "','" +usuario.getSenha()+ "'); ";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.execute();
-        connection.close();
+
+    }
+
+    public boolean existePorUsuarioESenha(Usuario usuario) throws SQLException {
+        String sql = "select * from usuario where usuario = '"+usuario.getUsuario()+"' and senha = '"+usuario.getSenha()+"';";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.execute();
+
+        ResultSet resultSet = statement.getResultSet();
+        return resultSet.next();
     }
 }
