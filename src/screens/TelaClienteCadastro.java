@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.CadastroCliente;
 
 public class TelaClienteCadastro extends javax.swing.JFrame {
@@ -528,7 +529,7 @@ public class TelaClienteCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         String nome = jTextFieldNome.getText();
         String cpf = jTextFieldCpf.getText();
         String sexo = jTextFieldSexo.getText();
@@ -536,14 +537,16 @@ public class TelaClienteCadastro extends javax.swing.JFrame {
         String telefone = jTextFieldTelefone.getText();
         String cidade = jTextFieldCidade.getText();
         String estado = jTextFieldEstado.getText();
-        
+
         CadastroCliente cadastroCliente;
         cadastroCliente = new CadastroCliente(nome, cpf, sexo, email, telefone, cidade, estado);
         try {
             Connection conexao = new Conexao().getConnection();
             CadastroDAO cadastroDAO = new CadastroDAO(conexao);
             cadastroDAO.insert(cadastroCliente);
-            
+
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
+
         } catch (SQLException ex) {
             Logger.getLogger(TelaClienteCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
