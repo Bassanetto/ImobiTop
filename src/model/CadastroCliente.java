@@ -7,14 +7,14 @@ package model;
 public class CadastroCliente {
 
     private String nome;
-    private int cpf;
+    private String cpf;
     private String sexo;
     private String email;
-    private int telefone;
+    private String telefone;
     private String cidade;
     private String estado;
 
-    public CadastroCliente(String nome, int cpf, String sexo, String email, int telefone, String cidade, String estado) {
+    public CadastroCliente(String nome, String cpf, String sexo, String email, String telefone, String cidade, String estado) {
         this.nome = nome;
         this.cpf = cpf;
         this.sexo = sexo;
@@ -32,11 +32,11 @@ public class CadastroCliente {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
     
@@ -56,11 +56,11 @@ public class CadastroCliente {
         this.email = email;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
