@@ -4,12 +4,13 @@
  */
 package screens;
 
+import dao.CadastroDAO;
 import dao.Conexao;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.CadastroCliente;
 
 /**
  *
@@ -530,14 +531,13 @@ public class TelaClienteCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CadastroCliente cadastroCliente;
+        cadastroCliente = new CadastroCliente("gu", 2, "masc", "teste@gmail.com", 2, "sorocaba", "sp");
         try {
             Connection conexao = new Conexao().getConnection();
-
-            String sql = "insert into cadastroCliente(nome, cpf, sexo, email, telefone, cidade, estado) values('gustavo', '123', 'masculino', 'teste@gmail.com', '1511111111', 'sorocaba', 'sp');";
-            PreparedStatement statement = conexao.prepareStatement(sql);
+            CadastroDAO cadastroDAO = new CadastroDAO(conexao);
+            cadastroDAO.insert(cadastroCliente);
             
-            statement.execute();
-
         } catch (SQLException ex) {
             Logger.getLogger(TelaClienteCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
