@@ -19,15 +19,20 @@ public class UsuarioDAO {
     }
 
     public void insert(Usuario usuario) throws SQLException {
-        String sql = "insert into usuario(usuario,senha) values('" +usuario.getUsuario()+ "','" +usuario.getSenha()+ "'); ";
+        String sql = "insert into usuario(usuario,senha) values(?,?);";
         PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, usuario.getUsuario());
+        statement.setString(2, usuario.getSenha());
         statement.execute();
 
     }
 
     public boolean existePorUsuarioESenha(Usuario usuario) throws SQLException {
-        String sql = "select * from usuario where usuario = '"+usuario.getUsuario()+"' and senha = '"+usuario.getSenha()+"';";
+        String sql = "select * from usuario where usuario = ? and senha = ?;";
+
         PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, usuario.getUsuario());
+        statement.setString(2, usuario.getSenha());
         statement.execute();
 
         ResultSet resultSet = statement.getResultSet();
