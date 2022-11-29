@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.CadastroCliente;
+import model.Empresa;
 
 public class CadastroDAO {
 
@@ -19,7 +20,14 @@ public class CadastroDAO {
 
     public void insert(CadastroCliente cadastroCliente) throws SQLException {
 
-        String sql = "insert into cadastroCliente(nome, cpf, sexo, email, telefone, cidade, estado) values('"+cadastroCliente.getNome()+"', '"+cadastroCliente.getCpf()+"', '"+cadastroCliente.getSexo()+"', '"+cadastroCliente.getEmail()+"', '"+cadastroCliente.getTelefone()+"', '"+cadastroCliente.getCidade()+"', '"+cadastroCliente.getEstado()+"');";
+        String sql = "insert into cadastroCliente(nome, cpf, sexo, email, telefone, cidade, estado) values('" + cadastroCliente.getNome() + "', '" + cadastroCliente.getCpf() + "', '" + cadastroCliente.getSexo() + "', '" + cadastroCliente.getEmail() + "', '" + cadastroCliente.getTelefone() + "', '" + cadastroCliente.getCidade() + "', '" + cadastroCliente.getEstado() + "');";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.execute();
+    }
+
+    public void insert(Empresa empresa) throws SQLException {
+        String sql = "insert into empresa(razaoSocial, cnpj, endereco) values('" + empresa.getRazaoSocial() + "', '" + empresa.getCnpj() + "', '" + empresa.getEndereco() + "');";
         PreparedStatement statement = connection.prepareStatement(sql);
 
         statement.execute();
