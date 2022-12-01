@@ -675,7 +675,30 @@ public class TelaCadastroFuncionarioEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        cadastroFuncionarioEmpresa.setCpf(txfCadastroCpf2.getText());
+        cadastroFuncionarioEmpresa.setNome(txfCadastroNome2.getText());
+        cadastroFuncionarioEmpresa.setTelefone(txfCadastroTelefone2.getText());
+        cadastroFuncionarioEmpresa.setCidade(txfCadastroCidade2.getText());
+
+        this.conectar.conectaBanco();
+        try {
+            this.conectar.updateSQL(
+                    "UPDATE cadastroEmpresa SET "
+                    + "cpf = '" + cadastroFuncionarioEmpresa.getCpf() + "',"
+                    + "nome = '" + cadastroFuncionarioEmpresa.getNome() + "',"
+                    + "telefone = '" + cadastroFuncionarioEmpresa.getTelefone() + "',"
+                    + "cidade = '" + cadastroFuncionarioEmpresa.getTelefone() + "'"
+                    + " WHERE cnpj = '" + cadastroFuncionarioEmpresa.getCpf() + "';"
+            );
+            JOptionPane.showMessageDialog(null, "Empresa atualizada com sucesso!");
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar a empresa: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a empresa!");
+
+        } finally {
+            ClearData();
+            this.conectar.fechaBanco();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -716,7 +739,7 @@ public class TelaCadastroFuncionarioEmpresa extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         this.conectar.conectaBanco();
-        
+
         String deleteCnpj = this.txfCadastroCnpj2.getText();
 
         try {
@@ -736,29 +759,29 @@ public class TelaCadastroFuncionarioEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        
+
         cadastroEmpresa.setCnpj(txfCadastroCnpj2.getText());
         cadastroEmpresa.setRazaoSocial(txfCadastroRazaoSocial2.getText());
         cadastroEmpresa.setEndereco(txfCadastroEndereco2.getText());
-          
+
         this.conectar.conectaBanco();
         try {
             this.conectar.updateSQL(
-            "UPDATE cadastroEmpresa SET "
-            + "cnpj = '" + cadastroEmpresa.getCnpj() + "',"
-            + "razaoSocial = '" + cadastroEmpresa.getRazaoSocial() + "',"
-            + "endereco = '" + cadastroEmpresa.getEndereco() + "'"
-            + " WHERE cnpj = '" + cadastroEmpresa.getCnpj() + "';"
+                    "UPDATE cadastroEmpresa SET "
+                    + "cnpj = '" + cadastroEmpresa.getCnpj() + "',"
+                    + "razaoSocial = '" + cadastroEmpresa.getRazaoSocial() + "',"
+                    + "endereco = '" + cadastroEmpresa.getEndereco() + "'"
+                    + " WHERE cnpj = '" + cadastroEmpresa.getCnpj() + "';"
             );
             JOptionPane.showMessageDialog(null, "Empresa atualizada com sucesso!");
-            } catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Erro ao atualizar a empresa: " + e.getMessage());
             JOptionPane.showMessageDialog(null, "Erro ao atualizar a empresa!");
-        
+
         } finally {
             ClearData();
             this.conectar.fechaBanco();
-    }
+        }
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void ClearData() {
