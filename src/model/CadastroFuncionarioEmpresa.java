@@ -1,6 +1,7 @@
 package model;
 
 public class CadastroFuncionarioEmpresa {
+
     // passar sexo, tipoServico e estado dps!
     private String nome;
     private String cpf;
@@ -10,14 +11,11 @@ public class CadastroFuncionarioEmpresa {
     private String cidade;
     // private String estado;
 
-    public CadastroFuncionarioEmpresa(String nome, String cpf, String telefone, String cidade) {
+    public CadastroFuncionarioEmpresa() {
         this.nome = nome;
         this.cpf = cpf;
-    //    this.sexo = sexo;
         this.telefone = telefone;
-    //    this.tipoServico = tipoServico;
         this.cidade = cidade;
-    //    this.estado = estado;
     }
 
     public String getNome() {
@@ -36,14 +34,12 @@ public class CadastroFuncionarioEmpresa {
         this.cpf = cpf;
     }
 
-   // public String getSexo() {
-   //     return sexo;
-   // }
-
-   // public void setSexo(String sexo) {
-   //     this.sexo = sexo;
-   // }
-
+    // public String getSexo() {
+    //     return sexo;
+    // }
+    // public void setSexo(String sexo) {
+    //     this.sexo = sexo;
+    // }
     public String getTelefone() {
         return telefone;
     }
@@ -52,14 +48,12 @@ public class CadastroFuncionarioEmpresa {
         this.telefone = telefone;
     }
 
-   // public String getTipoServico() {
-   //     return tipoServico;
-   // }
-
-   // public void setTipoServico(String tipoServico) {
-   //     this.tipoServico = tipoServico;
-   // }
-
+    // public String getTipoServico() {
+    //     return tipoServico;
+    // }
+    // public void setTipoServico(String tipoServico) {
+    //     this.tipoServico = tipoServico;
+    // }
     public String getCidade() {
         return cidade;
     }
@@ -71,7 +65,6 @@ public class CadastroFuncionarioEmpresa {
     //public String getEstado() {
     //    return estado;
     //}
-
     //public void setEstado(String estado) {
     //    this.estado = estado;
     //}
