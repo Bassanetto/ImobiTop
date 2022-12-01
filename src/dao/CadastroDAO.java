@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.CadastroCliente;
-import model.Empresa;
+import model.CadastroFuncionarioEmpresa;
 
 public class CadastroDAO {
 
@@ -26,11 +26,11 @@ public class CadastroDAO {
         statement.execute();
     }
 
-    public void insert(Empresa empresa) throws SQLException {
-        String sql = "insert into empresa(razaoSocial, cnpj, endereco) values('" + empresa.getRazaoSocial() + "', '" + empresa.getCnpj() + "', '" + empresa.getEndereco() + "');";
+    // falta sexo, tipoServico e estado!
+    public void insert(CadastroFuncionarioEmpresa cadastroFuncionarioEmpresa) throws SQLException{
+        String sql = "insert into cadastroFuncionarioEmpresa(nome, cpf, telefone, cidade) values('" + cadastroFuncionarioEmpresa.getNome() + "', '" + cadastroFuncionarioEmpresa.getCpf() + "', '" + cadastroFuncionarioEmpresa.getTelefone() + "', '" + cadastroFuncionarioEmpresa.getCidade() + "');";
         PreparedStatement statement = connection.prepareStatement(sql);
 
         statement.execute();
     }
-
 }
